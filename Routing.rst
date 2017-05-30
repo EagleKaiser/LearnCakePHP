@@ -169,7 +169,7 @@ Restful Routes
 
 You can easily generate RESTful routes with the Router
 
-.. code-block:: php
+.. code-block:: console
 
     <?php
     Router::scope('/',function($routes){
@@ -182,8 +182,6 @@ Nested resources
 ----------------
 
 * Once resources are in a scope, you can connect sub-resource routes as well
-
-
 
 .. code-block:: php
 

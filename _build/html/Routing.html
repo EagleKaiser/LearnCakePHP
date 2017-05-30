@@ -109,6 +109,8 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="Controllers.html">Controllers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Controller &amp; Route Example.html">Controller &amp; Route Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Views &amp; Templates.html">Views &amp; Templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Views Example.html">Views Example</a></li>
 </ul>
 
             
@@ -362,7 +364,7 @@
 <div class="section" id="restful-routes">
 <h2>Restful Routes<a class="headerlink" href="#restful-routes" title="Permalink to this headline">¶</a></h2>
 <p>You can easily generate RESTful routes with the Router</p>
-<div class="highlight-php"><div class="highlight"><pre><span></span>&lt;?php
+<div class="highlight-console"><div class="highlight"><pre><span></span>&lt;?php
 Router::scope(&#39;/&#39;,function($routes){
     $routes-&gt;extensions([json&#39;]);
     $routes-&gt;resources(&#39;Posts&#39;);

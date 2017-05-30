@@ -15,6 +15,8 @@ Welcome to LearnCakePHP's documentation!
    Routing
    Controllers
    Controller & Route Example
+   Views & Templates
+   Views Example
 
 
 Indices and tables

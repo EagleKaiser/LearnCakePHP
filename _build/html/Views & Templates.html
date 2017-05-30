@@ -1,0 +1,435 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Views &amp; Templates &mdash; LearnCakePHP  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="LearnCakePHP  documentation" href="index.html"/>
+        <link rel="next" title="Views Example" href="Views Example.html"/>
+        <link rel="prev" title="Controller &amp; Route Example" href="Controller &amp; Route Example.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> LearnCakePHP
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Connect to Database.html">Connect to Database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Routing.html">Routing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Controllers.html">Controllers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Controller &amp; Route Example.html">Controller &amp; Route Example</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Views &amp; Templates</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#what-is-a-view">What is a View?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#view-forms">View Forms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#anatomy-of-the-view-layer">Anatomy of the view layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#appview">AppView</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#view-templates">View Templates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#view-variables">View Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#extending-views">Extending Views</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#view-blocks">View Blocks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#layouts">Layouts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#elements">Elements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#custom-view-classes">Custom View Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#themes">Themes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#json-xml-views-data-views">JSON &amp; XML Views (Data Views)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Views Example.html">Views Example</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">LearnCakePHP</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Views &amp; Templates</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/Views &amp; Templates.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="views-templates">
+<h1>Views &amp; Templates<a class="headerlink" href="#views-templates" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="what-is-a-view">
+<h2>What is a View?<a class="headerlink" href="#what-is-a-view" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Views are responsible for generating and displaying the output of an application</li>
+<li>Everything that the user sees is output from a view/view template</li>
+</ul>
+</div>
+<div class="section" id="view-forms">
+<h2>View Forms<a class="headerlink" href="#view-forms" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Views can be displayed as different forms with different extensions</li>
+<li>some of the most common types are:</li>
+</ul>
+<table border="1" class="docutils">
+<colgroup>
+<col width="55%" />
+<col width="45%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>HTML</td>
+<td>XML</td>
+</tr>
+<tr class="row-even"><td>JSON</td>
+<td>RSS</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="anatomy-of-the-view-layer">
+<h2>Anatomy of the view layer<a class="headerlink" href="#anatomy-of-the-view-layer" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Views - Templates that hold the presentation logic of an application</li>
+<li>Elements - Small, reusable bits of code rendered inside views</li>
+<li>Layouts - Template wrapper code. Most views are rendered inside of a layout</li>
+<li>Helpers - Classes that encapsulate view logic that can be used in many areas of the application like date formatter or currency formatter</li>
+</ul>
+</div>
+<div class="section" id="appview">
+<h2>AppView<a class="headerlink" href="#appview" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>All application have a default AppView class which is located in src/View/AppView.php</li>
+<li>AppView can be used to load helpers that can be used in all of an application&#8217;s views. Use &#8220;initialize()&#8221; for this</li>
+</ul>
+</div>
+<div class="section" id="view-templates">
+<h2>View Templates<a class="headerlink" href="#view-templates" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>By default, templates are in PHP and use a special file extension called &#8221;.ctp&#8221;(CakePHP Template)</li>
+<li>These files contain representational logic and are stored in &#8220;src/Template&#8221;</li>
+<li>Templates should be named after the controller action that it corresponds to (eg. src/Template/Posts/view.ctp)</li>
+</ul>
+</div>
+<div class="section" id="view-variables">
+<h2>View Variables<a class="headerlink" href="#view-variables" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Variables can be set in a controller and passed on to a view using &#8220;set()&#8221;</li>
+</ul>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span><span class="s1">&#39;John&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>You can then use the &#8220;name&#8221; variable in the view</li>
+</ul>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="nx">My</span> <span class="nx">name</span> <span class="nx">is</span> <span class="o">&lt;?=</span><span class="nx">name</span><span class="cp">?&gt;</span><span class="x">&lt;/p&gt;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>Variable data can easily be escaped using &#8220;h()&#8221;</li>
+</ul>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="nx">My</span> <span class="nx">name</span> <span class="nx">is</span> <span class="o">&lt;?=</span><span class="nx">h</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span><span class="cp">?&gt;</span><span class="x">&lt;/p&gt; // this is for security</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="extending-views">
+<h2>Extending Views<a class="headerlink" href="#extending-views" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Views can be wrapped in another by using view extending. This allows us to follow DRY(Don&#8217;t Repeat Yourself) principles</li>
+</ul>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="o">&lt;</span><span class="nx">h1</span><span class="o">&gt;&lt;?=</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">fetch</span><span class="p">(</span><span class="s1">&#39;title&#39;</span><span class="p">)</span><span class="cp">?&gt;</span><span class="x">&lt;/h1&gt;</span>
+<span class="cp">&lt;?</span><span class="o">=</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">fetch</span><span class="p">(</span><span class="s1">&#39;content&#39;</span><span class="p">)</span><span class="cp">?&gt;</span><span class="x"></span>
+
+<span class="x">&lt;div&gt; class=&quot;actions&quot;&gt;</span>
+<span class="x">    &lt;h3&gt;User Actions&lt;/h3&gt;</span>
+<span class="x">    </span><span class="cp">&lt;?</span><span class="o">=</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">fetch</span><span class="p">(</span><span class="s1">&#39;sidebar&#39;</span><span class="p">)</span><span class="cp">?&gt;</span><span class="x"></span>
+<span class="x">&lt;/div&gt;</span>
+<span class="x">//title, content and sidebar are files in another folder</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="view-blocks">
+<h2>View Blocks<a class="headerlink" href="#view-blocks" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Using view blocks, we can define blocks in our views that will be defined somewhere else</li>
+<li>This is ideal for things like sidebars, footers, etc</li>
+</ul>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">start</span><span class="p">(</span><span class="s1">&#39;sidebar&#39;</span><span class="p">);</span>
+<span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">element</span><span class="p">(</span><span class="s1">&#39;sidebar/recent_posts&#39;</span><span class="p">);</span>
+<span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">element</span><span class="p">(</span><span class="s1">&#39;sidebar/recent_comments&#39;</span><span class="p">);</span>
+<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">end</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="layouts">
+<h2>Layouts<a class="headerlink" href="#layouts" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Layouts are templates that wrap another template and contain code that can be displayed on all pages/view</li>
+<li>The default layout is at src/Templates/Layouts/default.ctp</li>
+</ul>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="o">&lt;?=</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">fetch</span><span class="p">(</span><span class="s1">&#39;content&#39;</span><span class="p">)</span><span class="cp">?&gt;</span><span class="x"></span>
+<span class="x">//displays the content from the current rendered view</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>set the title with</li>
+</ul>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="o">&lt;?=</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assign</span><span class="p">(</span><span class="s1">&#39;title&#39;</span><span class="p">,</span><span class="s1">&#39;Welcome&#39;</span><span class="p">);</span><span class="cp">?&gt;</span><span class="x"></span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="elements">
+<h2>Elements<a class="headerlink" href="#elements" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Elements are small bits of view code that can be re-used from page to page</li>
+<li>This would be things like ad boxes, navigation, sliders, etc</li>
+<li>Can be considered a mini-view</li>
+</ul>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">element</span><span class="p">(</span><span class="s1">&#39;navbar&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>Can add a second param to pass values</li>
+</ul>
+</div>
+<div class="section" id="custom-view-classes">
+<h2>Custom View Classes<a class="headerlink" href="#custom-view-classes" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>You can add custom classes for new types of data view</li>
+<li>Classes go in &#8220;src/View&#8221;</li>
+<li>Should be suffixed with View (eg. pdfView)</li>
+<li>When referencing a view class, do not use &#8220;View&#8221;</li>
+</ul>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="nv">$builder</span><span class="o">-&gt;</span><span class="na">viewClass</span><span class="p">(</span><span class="s1">&#39;pdf&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="themes">
+<h2>Themes<a class="headerlink" href="#themes" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Themes are plugins that focus on providing template files. They are used to switch the look of the page quickly and easily</li>
+<li>Set the theme name in the beforeRender() callback in the controller</li>
+</ul>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="k">class</span> <span class="nc">PostController</span> <span class="k">extends</span> <span class="nx">AppController</span><span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">beforeRender</span><span class="p">(</span><span class="nx">Event</span> <span class="nv">$event</span><span class="p">){</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">viewBuilder</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">theme</span><span class="p">(</span><span class="s1">&#39;Modern&#39;</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="json-xml-views-data-views">
+<h2>JSON &amp; XML Views (Data Views)<a class="headerlink" href="#json-xml-views-data-views" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>JsonView &amp; XmlView allow us to create JSON &amp; XML responses</li>
+<li>You must enable RequestHandlerComponent</li>
+</ul>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">loadComponent</span><span class="p">(</span><span class="s1">&#39;RequestHandler&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>You can generate these either by using the _serialize key of by just creating normal template files</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Views Example.html" class="btn btn-neutral float-right" title="Views Example" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Controller &amp; Route Example.html" class="btn btn-neutral" title="Controller &amp; Route Example" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, eagle.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
