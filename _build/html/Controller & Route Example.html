@@ -1,0 +1,522 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Controller &amp; Route Example &mdash; LearnCakePHP  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="LearnCakePHP  documentation" href="index.html"/>
+        <link rel="prev" title="Controllers" href="Controllers.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> LearnCakePHP
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Connect to Database.html">Connect to Database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Routing.html">Routing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Controllers.html">Controllers</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Controller &amp; Route Example</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#query-string">Query String</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#router-prefixes">Router Prefixes</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">LearnCakePHP</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Controller &amp; Route Example</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/Controller &amp; Route Example.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="controller-route-example">
+<h1>Controller &amp; Route Example<a class="headerlink" href="#controller-route-example" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li>Go to url localhost:81/myblog/posts and it will through an error asking to create PostsController class in src/Controller/PostsController.php with the following code:</li>
+</ul>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="k">namespace</span> <span class="nx">App\Controller</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">App\Controller\AppController</span><span class="p">;</span>
+<span class="k">class</span> <span class="nc">PostsController</span> <span class="k">extends</span> <span class="nx">AppController</span>
+<span class="p">{</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>Create PostsController.php file in src/Controller folder and but the above code in it</li>
+<li>Now if you go to the url it will ask for an index function inside PostsController class</li>
+</ul>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="k">namespace</span> <span class="nx">App\Controller</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">App\Controller\AppController</span><span class="p">;</span>
+<span class="k">class</span> <span class="nc">PostsController</span> <span class="k">extends</span> <span class="nx">AppController</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">index</span><span class="p">()</span>
+    <span class="p">{</span>
+
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>Now CakePHP will ask for a view for the PostsController::index() in src/Template/Post/index.ctp but we will change the Route</li>
+<li>Go to config/routes.php to add a route</li>
+</ul>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="nx">Router</span><span class="o">::</span><span class="na">scope</span><span class="p">(</span><span class="s1">&#39;/posts&#39;</span><span class="p">,</span> <span class="k">function</span><span class="p">(</span><span class="nx">RouteBuilder</span> <span class="nv">$routes</span><span class="p">){</span>
+    <span class="nv">$routes</span><span class="o">-&gt;</span><span class="na">connect</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span>
+        <span class="p">[</span><span class="s1">&#39;controller&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Posts&#39;</span><span class="p">]</span>
+    <span class="p">);</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>To test that the route is working add the following code to the PostsController index action then go to url localhost:81/myblog/posts</li>
+</ul>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="k">die</span><span class="p">(</span><span class="s1">&#39;This is the posts/index&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">die function will stop the execution of the program at this point and without it the program will proceed to need a view for the controller</p>
+</div>
+<ul class="simple">
+<li>Note that you can use a constructor code to run a code as soon as AppController start</li>
+</ul>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="k">public</span> <span class="k">function</span> <span class="nf">initialize</span><span class="p">(){</span>
+    <span class="k">die</span><span class="p">(</span><span class="s1">&#39;This is the initialize constructor for AppController&#39;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">initialize() function will override index() function</p>
+</div>
+<ul>
+<li><dl class="first docutils">
+<dt>Now we will pass a parameter after post url and use it in the controller:</dt>
+<dd><ul class="first simple">
+<li>In routes.php add the following code:</li>
+</ul>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="nx">Router</span><span class="o">::</span><span class="na">scope</span><span class="p">(</span><span class="s1">&#39;/posts/:id&#39;</span><span class="p">,</span> <span class="k">function</span><span class="p">(</span><span class="nv">$routes</span><span class="p">){</span>
+    <span class="nv">$routes</span><span class="o">-&gt;</span><span class="na">connect</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span>
+    <span class="p">[</span><span class="s1">&#39;controller&#39;</span><span class="o">=&gt;</span><span class="s1">&#39;Posts&#39;</span><span class="p">,</span> <span class="s1">&#39;action&#39;</span><span class="o">=&gt;</span><span class="s1">&#39;view&#39;</span><span class="p">],</span>
+    <span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="o">=&gt;</span><span class="s1">&#39;\d+&#39;</span><span class="p">,</span> <span class="s1">&#39;pass&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]]</span> <span class="c1">//the \d+ is a regular expression for validation</span>
+    <span class="p">);</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>In PostsController.php add the following code:</li>
+</ul>
+<div class="last highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="k">public</span> <span class="k">function</span> <span class="nf">view</span><span class="p">(</span><span class="nv">$id</span><span class="p">){</span>
+    <span class="k">die</span><span class="p">(</span><span class="s1">&#39;This is post &#39;</span><span class="o">.</span><span class="nv">$id</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><p class="first">Note that you have to comment the initialize function that we have created before or it will override this function</p>
+</li>
+<li><p class="first">Now if you go to url localhost:81/myblog/post/1 it will show This is post 1</p>
+</li>
+<li><p class="first">The following code are in the same scope (posts) and should be modified:</p>
+</li>
+</ul>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="nx">Router</span><span class="o">::</span><span class="na">scope</span><span class="p">(</span><span class="s1">&#39;/posts&#39;</span><span class="p">,</span> <span class="k">function</span><span class="p">(</span><span class="nx">RouteBuilder</span> <span class="nv">$routes</span><span class="p">){</span>
+<span class="nv">$routes</span><span class="o">-&gt;</span><span class="na">connect</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span>
+    <span class="p">[</span><span class="s1">&#39;controller&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Posts&#39;</span><span class="p">]</span>
+    <span class="p">);</span>
+<span class="p">});</span>
+
+<span class="nx">Router</span><span class="o">::</span><span class="na">scope</span><span class="p">(</span><span class="s1">&#39;/posts/:id&#39;</span><span class="p">,</span> <span class="k">function</span><span class="p">(</span><span class="nv">$routes</span><span class="p">){</span>
+    <span class="nv">$routes</span><span class="o">-&gt;</span><span class="na">connect</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span>
+    <span class="p">[</span><span class="s1">&#39;controller&#39;</span><span class="o">=&gt;</span><span class="s1">&#39;Posts&#39;</span><span class="p">,</span> <span class="s1">&#39;action&#39;</span><span class="o">=&gt;</span><span class="s1">&#39;view&#39;</span><span class="p">],</span>
+    <span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="o">=&gt;</span><span class="s1">&#39;\d+&#39;</span><span class="p">,</span> <span class="s1">&#39;pass&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]]</span>
+    <span class="p">);</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>Modified to:</li>
+</ul>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="nx">Router</span><span class="o">::</span><span class="na">scope</span><span class="p">(</span><span class="s1">&#39;/posts&#39;</span><span class="p">,</span> <span class="k">function</span><span class="p">(</span><span class="nx">RouteBuilder</span> <span class="nv">$routes</span><span class="p">){</span>
+    <span class="nv">$routes</span><span class="o">-&gt;</span><span class="na">connect</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span>
+        <span class="p">[</span><span class="s1">&#39;controller&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Posts&#39;</span><span class="p">]</span>
+    <span class="p">);</span>
+    <span class="nv">$routes</span><span class="o">-&gt;</span><span class="na">connect</span><span class="p">(</span><span class="s1">&#39;/:id&#39;</span><span class="p">,</span>
+    <span class="p">[</span><span class="s1">&#39;controller&#39;</span><span class="o">=&gt;</span><span class="s1">&#39;Posts&#39;</span><span class="p">,</span> <span class="s1">&#39;action&#39;</span><span class="o">=&gt;</span><span class="s1">&#39;view&#39;</span><span class="p">],</span>
+    <span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="o">=&gt;</span><span class="s1">&#39;\d+&#39;</span><span class="p">,</span> <span class="s1">&#39;pass&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]]</span>
+    <span class="p">);</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<ul>
+<li><dl class="first docutils">
+<dt>Add create and edit route to the post scope</dt>
+<dd><ul class="first simple">
+<li>In routes.php add the following code</li>
+</ul>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+
+    <span class="nv">$routes</span><span class="o">-&gt;</span><span class="na">connect</span><span class="p">(</span><span class="s1">&#39;/create&#39;</span><span class="p">,</span>
+        <span class="p">[</span><span class="s1">&#39;controller&#39;</span><span class="o">=&gt;</span><span class="s1">&#39;Posts&#39;</span><span class="p">,</span> <span class="s1">&#39;action&#39;</span><span class="o">=&gt;</span><span class="s1">&#39;create&#39;</span><span class="p">]</span>
+    <span class="p">);</span>
+    <span class="nv">$routes</span><span class="o">-&gt;</span><span class="na">connect</span><span class="p">(</span><span class="s1">&#39;edit/:id&#39;</span><span class="p">,</span>
+        <span class="p">[</span><span class="s1">&#39;controller&#39;</span><span class="o">=&gt;</span><span class="s1">&#39;Posts&#39;</span><span class="p">,</span> <span class="s1">&#39;action&#39;</span><span class="o">=&gt;</span><span class="s1">&#39;edit&#39;</span><span class="p">],</span>
+        <span class="p">[</span><span class="s1">&#39;id&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;\d+&#39;</span><span class="p">,</span> <span class="s1">&#39;pass&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]]</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>In PostsController.php add the following code</li>
+</ul>
+<div class="last highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="k">public</span> <span class="k">function</span> <span class="nf">edit</span><span class="p">(</span><span class="nv">$id</span><span class="p">){</span>
+    <span class="k">die</span><span class="p">(</span><span class="s1">&#39;editing post &#39;</span><span class="o">.</span><span class="nv">$id</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="k">public</span> <span class="k">function</span> <span class="nf">create</span><span class="p">(){</span>
+    <span class="k">die</span><span class="p">(</span><span class="s1">&#39;create post&#39;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><p class="first">This will add url localhost:81/myblog/edit/&lt;any number&gt; and localhost:81/myblog/create</p>
+</li>
+</ul>
+<div class="section" id="query-string">
+<h2>Query String<a class="headerlink" href="#query-string" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><dl class="first docutils">
+<dt>To get the a parameter from url like localhost:81/myblog/posts/hello?name=mike</dt>
+<dd><ul class="first simple">
+<li>In PostsController.php add the following code:</li>
+</ul>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="k">public</span> <span class="k">function</span> <span class="nf">hello</span><span class="p">(){</span>
+    <span class="k">die</span><span class="p">(</span><span class="s1">&#39;hello &#39;</span><span class="o">.</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">request</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]);</span>
+    <span class="c1">//or</span>
+    <span class="c1">//die(&#39;hello &#39;.$this-&gt;request[&#39;url&#39;][&#39;name&#39;]);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>And add the following code to routes.php inside posts scope</li>
+</ul>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="nv">$routes</span><span class="o">-&gt;</span><span class="na">connect</span><span class="p">(</span><span class="s1">&#39;/hello&#39;</span><span class="p">,</span>
+    <span class="p">[</span><span class="s1">&#39;controller&#39;</span><span class="o">=&gt;</span><span class="s1">&#39;Posts&#39;</span><span class="p">,</span> <span class="s1">&#39;action&#39;</span><span class="p">,</span> <span class="o">=&gt;</span> <span class="s1">&#39;hello&#39;</span><span class="p">]</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<ul class="last simple">
+<li>Now if you go to url localhost:81/myblog/posts/hello?name=mike will get hello mike</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">And for multiple parameter in a url like localhost:81/myblog/posts/hello?name=mike&amp;age=34 use the following code for the hello() function</p>
+</li>
+</ul>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="k">public</span> <span class="k">function</span> <span class="nf">hello</span><span class="p">(){</span>
+    <span class="c1">//print_r($this-&gt;request-&gt;query);</span>
+    <span class="c1">//or for more info about parameters</span>
+    <span class="nb">print_r</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">request</span><span class="o">-&gt;</span><span class="na">params</span><span class="p">);</span>
+    <span class="k">die</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>And to know if the request is a post or get use the following in the hello() function</li>
+</ul>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="k">if</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">request</span><span class="o">-&gt;</span><span class="na">is</span><span class="p">(</span><span class="s1">&#39;post&#39;</span><span class="p">)){</span>
+    <span class="k">die</span><span class="p">(</span><span class="s1">&#39;This is a POST&#39;</span><span class="p">);</span>
+<span class="p">}</span> <span class="k">elseif</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">request</span><span class="o">-&gt;</span><span class="na">is</span><span class="p">(</span><span class="s1">&#39;get&#39;</span><span class="p">)){</span>
+    <span class="k">die</span><span class="p">(</span><span class="s1">&#39;This is a GET&#39;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>And to get path information use the following in hello() function</li>
+</ul>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="c1">//die($this-&gt;request-&gt;webroot); //will output: /myblog/</span>
+<span class="k">die</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">request</span><span class="o">-&gt;</span><span class="na">base</span><span class="p">);</span> <span class="c1">//will output: /myblog</span>
+<span class="k">die</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">request</span><span class="o">-&gt;</span><span class="na">hear</span><span class="p">);</span> <span class="c1">//will output: /myblog/posts/hello</span>
+<span class="k">die</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">request</span><span class="o">-&gt;</span><span class="na">header</span><span class="p">(</span><span class="s1">&#39;User-Agent&#39;</span><span class="p">));</span> <span class="c1">//will output: agent information</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="router-prefixes">
+<h2>Router Prefixes<a class="headerlink" href="#router-prefixes" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Adding prefix for admin localhost:81/myblog/admin add the following code to routes.php</li>
+</ul>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="x">Router::prefix(&#39;admin&#39;, function($routes){</span>
+<span class="x">    $routes-&gt;connect(&#39;/&#39;, [&#39;controller&#39; =&gt; &#39;Dashboard&#39;]);</span>
+<span class="x">    $routes-&gt;connect(&#39;/create&#39;, [&#39;controller&#39; =&gt; &#39;Posts&#39;, &#39;action&#39; =&gt; &#39;create&#39;]);</span>
+<span class="x">});</span>
+</pre></div>
+</div>
+<ul>
+<li><p class="first">Now if you go to localhost:81/myblog/admin it will ask for DashboardController.php which we will add to a new folder in src/Controller folder called Admin</p>
+</li>
+<li><dl class="first docutils">
+<dt>Also create PostsController.php in the same folder</dt>
+<dd><ul class="first simple">
+<li>DashboardController.php</li>
+</ul>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="k">namespace</span> <span class="nx">App\Controller\Admin</span><span class="p">;</span>  <span class="c1">// note the Admin namespace point to the Admin folder</span>
+<span class="k">use</span> <span class="nx">App\Controller\AppController</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">DashboardController</span> <span class="k">extends</span> <span class="nx">AppController</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">index</span><span class="p">(){</span>
+        <span class="k">die</span><span class="p">(</span><span class="s1">&#39;Dashboard&#39;</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>PostsController.php</li>
+</ul>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="k">namespace</span> <span class="nx">App\Controller\Admin</span><span class="p">;</span>  <span class="c1">// note the Admin namespace point to the Admin folder</span>
+<span class="k">use</span> <span class="nx">App\Controller\AppController</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">PostsController</span> <span class="k">extends</span> <span class="nx">AppController</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">create</span><span class="p">(){</span>
+        <span class="k">die</span><span class="p">(</span><span class="s1">&#39;Admin creating Post&#39;</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>So now if you go to localhost:81/myblog/admin you will get Dashboard and if you go to localhost:81/myblog/admin/create you will get Admin Creating Post</li>
+</ul>
+<div class="last admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Note that if you change the route to scope instead of prefix you will get create post which is the result for PostsController.php that belong to the Controller folder not the one belongs to Admin folder and this is the diffident between scope and prefix where prefix will look for a controller within a sub-namespace which in this case is the Admin folder</p>
+</div>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="Controllers.html" class="btn btn-neutral" title="Controllers" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, eagle.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

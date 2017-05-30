@@ -1,0 +1,442 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Controllers &mdash; LearnCakePHP  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="LearnCakePHP  documentation" href="index.html"/>
+        <link rel="next" title="Controller &amp; Route Example" href="Controller &amp; Route Example.html"/>
+        <link rel="prev" title="Routing" href="Routing.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> LearnCakePHP
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Connect to Database.html">Connect to Database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Routing.html">Routing</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Controllers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#naming-conventions">Naming Conventions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#appcontroller-class">AppController Class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the-request-object">The Request Object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#controller-setup">Controller Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#passing-view-data">Passing View data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#view-options">View Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#handling-redirects">Handling Redirects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#actions-and-model-loading">Actions and Model loading</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#model-pagination">Model Pagination</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#loading-components-helpers">Loading Components &amp; Helpers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#life-cycle-callbacks">Life-Cycle Callbacks</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Controller &amp; Route Example.html">Controller &amp; Route Example</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">LearnCakePHP</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Controllers</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/Controllers.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="controllers">
+<h1>Controllers<a class="headerlink" href="#controllers" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li>Controllers hold the actions that your routes are mapped to</li>
+<li><dl class="first docutils">
+<dt>Controllers are responsible for:</dt>
+<dd><ul class="first last">
+<li>The interpretation of any request data</li>
+<li>Making sure the right models are called</li>
+<li>Making sure the right response or view is rendered</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li>Tour models should be fat and your Controllers thin</li>
+<li>Doing this will help your code be more reusable and also makes it easier to test</li>
+</ul>
+<div class="section" id="naming-conventions">
+<h2>Naming Conventions<a class="headerlink" href="#naming-conventions" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Files should end in &#8220;Controller&#8221; (UsersController.php)</li>
+<li>Classes should also end in Controller (UsersController)</li>
+<li>Named after the primary model (User)</li>
+</ul>
+</div>
+<div class="section" id="appcontroller-class">
+<h2>AppController Class<a class="headerlink" href="#appcontroller-class" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>All controllers you create will extend the AppController Class</li>
+<li>Location is src/Controller/AppController.php</li>
+<li>You can use the &#8220;initializer()&#8221; method in your controller class to use a constructor</li>
+<li>AppController extends Cake/Controller/Controller</li>
+</ul>
+</div>
+<div class="section" id="the-request-object">
+<h2>The Request Object<a class="headerlink" href="#the-request-object" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>The CakePHP router use connecting routes to find and create the controller instance</li>
+<li>The request data is stored in the request object</li>
+<li>Access using the $this-&gt;request property</li>
+</ul>
+</div>
+<div class="section" id="controller-setup">
+<h2>Controller Setup<a class="headerlink" href="#controller-setup" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="k">namespace</span> <span class="nx">App\Controller</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">App\Controller\AppController</span><span class="p">;</span>
+<span class="k">class</span> <span class="nc">BooksController</span> <span class="k">extends</span> <span class="nx">AppController</span><span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">index</span><span class="p">(){</span>
+        <span class="o">/</span><span class="nx">Action</span> <span class="nx">code</span>
+    <span class="p">}</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">view</span><span class="p">(</span><span class="nv">$id</span><span class="p">){</span>
+        <span class="c1">//Action code</span>
+    <span class="p">}</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">search</span><span class="p">(</span><span class="nv">$query</span><span class="p">){</span>
+        <span class="c1">//Action code</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="passing-view-data">
+<h2>Passing View data<a class="headerlink" href="#passing-view-data" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Controller::set() is used to pass data from the controller to the view</li>
+</ul>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="x">$this-&gt;set(&#39;firstName&#39;,&#39;John&#39;);</span>
+<span class="x">$this-&gt;set(&#39;lastName&#39;,&#39;Doe&#39;);</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>Because of CakePHP strict conventions, you co not need to render the view manually</li>
+<li>In View:</li>
+</ul>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="nx">My</span> <span class="nx">name</span> <span class="nx">is</span> <span class="o">&lt;?=</span><span class="nx">h</span><span class="p">(</span><span class="nv">$firstName</span><span class="p">)</span><span class="cp">?&gt;</span><span class="x"> </span><span class="cp">&lt;?</span><span class="o">=</span><span class="nx">h</span><span class="p">(</span><span class="nv">$lastName</span><span class="p">)</span><span class="cp">?&gt;</span><span class="x"></span>
+<span class="x">//h is a helper function</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="view-options">
+<h2>View Options<a class="headerlink" href="#view-options" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>You can set specific view options using viewBuilder()</li>
+</ul>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">viewBuilder</span><span class="p">()</span>
+    <span class="o">-&gt;</span><span class="na">helper</span><span class="p">([</span><span class="s1">&#39;MyHelper&#39;</span><span class="p">])</span>
+    <span class="o">-&gt;</span><span class="na">theme</span><span class="p">(</span><span class="s1">&#39;SomeTheme&#39;</span><span class="p">)</span>
+    <span class="o">-&gt;</span><span class="na">className</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>You can use the correct naming conventions and the view will be rendered automatically but to do it manually, use:</li>
+</ul>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">render</span><span class="p">()</span>
+<span class="c1">//or specify a view</span>
+<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">render</span><span class="p">(</span><span class="s1">&#39;someView&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="handling-redirects">
+<h2>Handling Redirects<a class="headerlink" href="#handling-redirects" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>The most common way to redirect would be to use Controller::redirect()</li>
+</ul>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">redirect</span><span class="p">(</span>
+    <span class="p">[</span><span class="s1">&#39;controller&#39;</span><span class="o">=&gt;</span><span class="s1">&#39;Users&#39;</span><span class="p">,</span><span class="s1">&#39;action&#39;</span><span class="o">=&gt;</span><span class="s1">&#39;register&#39;</span><span class="p">]</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>Relative and Absolute Paths:</li>
+</ul>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">redirect</span><span class="p">(</span><span class="s1">&#39;/orders/thanks&#39;</span><span class="p">);</span>
+<span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">redirect</span><span class="p">(</span><span class="s1">&#39;http://www.example.com&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>Go back to referrer:</li>
+</ul>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">redirect</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">referrer</span><span class="p">());</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="actions-and-model-loading">
+<h2>Actions and Model loading<a class="headerlink" href="#actions-and-model-loading" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>To redirect to another action on the same controller:</li>
+</ul>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">setAction</span><span class="p">(</span><span class="s1">&#39;index&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>Load a model table that is not the controller default</li>
+</ul>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">loadModel</span><span class="p">(</span><span class="s1">&#39;Articles&#39;</span><span class="p">);</span>
+<span class="nv">$recentArticles</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Articles</span><span class="o">-&gt;</span><span class="na">find</span><span class="p">(</span><span class="s1">&#39;all&#39;</span><span class="p">,</span> <span class="p">[</span>
+    <span class="s1">&#39;limit&#39;</span><span class="o">=&gt;</span><span class="mi">5</span><span class="p">,</span>
+    <span class="s1">&#39;order&#39;</span><span class="o">=&gt;</span><span class="s1">&#39;Articles.created DESC&#39;</span>
+<span class="p">]);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="model-pagination">
+<h2>Model Pagination<a class="headerlink" href="#model-pagination" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Use the $paginate attribute to easily page result from the model</li>
+</ul>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="k">class</span> <span class="nc">PostController</span> <span class="k">extends</span> <span class="nx">AppController</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="nv">$paginate</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="s1">&#39;Post&#39;</span><span class="o">=&gt;</span><span class="p">[</span>
+            <span class="s1">&#39;conditions&#39;</span><span class="o">=&gt;</span><span class="p">[</span><span class="s1">&#39;published&#39;</span><span class="o">=&gt;</span><span class="mi">1</span><span class="p">]</span>
+        <span class="p">]</span>
+    <span class="p">];</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="loading-components-helpers">
+<h2>Loading Components &amp; Helpers<a class="headerlink" href="#loading-components-helpers" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Define components in the controller&#8217;s initialize() function:</li>
+</ul>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="k">public</span> <span class="k">function</span> <span class="nf">initialize</span><span class="p">(){</span>
+    <span class="k">parent</span><span class="o">::</span><span class="na">initialize</span><span class="p">();</span>
+    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">loadComponent</span><span class="p">(</span><span class="s1">&#39;Csrf&#39;</span><span class="p">);</span>
+    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">loadComponent</span><span class="p">(</span><span class="s1">&#39;Comments&#39;</span><span class="p">,</span> <span class="nx">Configure</span><span class="o">::</span><span class="na">read</span><span class="p">(</span><span class="s1">&#39;Comments&#39;</span><span class="p">));</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>Load Helpers:</li>
+</ul>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="k">public</span> <span class="nv">$helpers</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Form&#39;</span><span class="p">,</span><span class="s1">&#39;Html&#39;</span><span class="p">];</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="life-cycle-callbacks">
+<h2>Life-Cycle Callbacks<a class="headerlink" href="#life-cycle-callbacks" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>beforeFilter(Event $event) is executed before every action in the controller. Useful for session and permission operations.</li>
+<li>beforeRender(Event $event) is executed after the action logic</li>
+<li>AfterFilter(Event $event) is executed after controller action and after render is complete</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Controller &amp; Route Example.html" class="btn btn-neutral float-right" title="Controller &amp; Route Example" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Routing.html" class="btn btn-neutral" title="Routing" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, eagle.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -1,0 +1,466 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Routing &mdash; LearnCakePHP  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="LearnCakePHP  documentation" href="index.html"/>
+        <link rel="next" title="Controllers" href="Controllers.html"/>
+        <link rel="prev" title="Connect to Database" href="Connect to Database.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> LearnCakePHP
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Connect to Database.html">Connect to Database</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Routing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#scoped-builder-recommended">1- Scoped Builder (Recommended)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#static-method">2- Static Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#simple-route">Simple Route</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#passing-parameters">Passing Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#wildcard">Wildcard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#route-elements">Route Elements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#special-route-elements">Special Route elements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#named-elements">Named Elements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#route-prefixes">Route Prefixes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#plugin-routes">Plugin Routes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#dashed-route">Dashed Route</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#file-extensions">File Extensions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#restful-routes">Restful Routes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#nested-resources">Nested resources</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Controllers.html">Controllers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Controller &amp; Route Example.html">Controller &amp; Route Example</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">LearnCakePHP</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Routing</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/Routing.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="routing">
+<h1>Routing<a class="headerlink" href="#routing" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li>Routing allows us to map URLs to specific controller actions</li>
+<li>Routes are defined in the config/routes.php</li>
+<li>There are 2 interfaces to define a rout:</li>
+</ul>
+<div class="section" id="scoped-builder-recommended">
+<h2>1- Scoped Builder (Recommended)<a class="headerlink" href="#scoped-builder-recommended" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="nx">Router</span><span class="o">::</span><span class="na">scope</span><span class="p">(</span><span class="s1">&#39;/users&#39;</span><span class="p">,</span> <span class="k">function</span><span class="p">(</span><span class="nv">$routes</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="nv">$routes</span><span class="o">-&gt;</span><span class="na">connect</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,[</span><span class="s1">&#39;controller&#39;</span><span class="o">=&gt;</span><span class="s1">&#39;Users&#39;</span><span class="p">,</span> <span class="s1">&#39;action&#39;</span><span class="o">=&gt;</span><span class="s1">&#39;index&#39;</span><span class="p">]);</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="static-method">
+<h2>2- Static Method<a class="headerlink" href="#static-method" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="nx">Router</span><span class="o">::</span><span class="na">connect</span><span class="p">(</span><span class="s1">&#39;/users&#39;</span><span class="p">,[</span><span class="s1">&#39;controller&#39;</span><span class="o">=&gt;</span><span class="s1">&#39;Users&#39;</span><span class="p">,</span> <span class="s1">&#39;action&#39;</span><span class="o">=&gt;</span><span class="s1">&#39;index&#39;</span><span class="p">]);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="simple-route">
+<h2>Simple Route<a class="headerlink" href="#simple-route" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="nv">$routes</span><span class="o">-&gt;</span><span class="na">connect</span><span class="p">(</span><span class="s1">&#39;/users&#39;</span><span class="p">,[</span><span class="s1">&#39;controller&#39;</span><span class="o">=&gt;</span><span class="s1">&#39;Users&#39;</span><span class="p">,</span><span class="s1">&#39;action&#39;</span><span class="o">=&gt;</span><span class="s1">&#39;index&#39;</span><span class="p">]);</span>
+<span class="c1">//this will execute the index() method inside of the Users controller</span>
+</pre></div>
+</div>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="nv">$routes</span><span class="o">-&gt;</span><span class="na">connect</span><span class="p">(</span><span class="s1">&#39;/users&#39;</span><span class="p">,[</span><span class="s1">&#39;controller&#39;</span><span class="o">=&gt;</span><span class="s1">&#39;Users&#39;</span><span class="p">]);</span>
+<span class="c1">//this will do the same thing because index() is the default action</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="passing-parameters">
+<h2>Passing Parameters<a class="headerlink" href="#passing-parameters" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="nx">Router</span><span class="o">::</span><span class="na">connect</span><span class="p">(</span>
+<span class="s1">&#39;/users/:id&#39;</span><span class="p">,</span>
+<span class="p">[</span><span class="s1">&#39;controller&#39;</span><span class="o">=&gt;</span><span class="s1">&#39;Users&#39;</span><span class="p">,</span> <span class="s1">&#39;action&#39;</span><span class="o">=&gt;</span><span class="s1">&#39;view&#39;</span><span class="p">],</span>
+<span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="o">=&gt;</span><span class="s1">&#39;\d+&#39;</span><span class="p">,</span><span class="s1">&#39;pass&#39;</span><span class="o">=&gt;</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]]</span> <span class="c1">//&#39;\d+&#39; is a regular expression that will validate that the id is a digit</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="wildcard">
+<h2>Wildcard<a class="headerlink" href="#wildcard" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="nv">$routes</span><span class="o">-&gt;</span><span class="na">connect</span><span class="p">(</span>
+    <span class="s1">&#39;/listings/*&#39;</span><span class="p">,</span>
+    <span class="p">[</span><span class="s1">&#39;controller&#39;</span><span class="o">=&gt;</span><span class="s1">&#39;Listings&#39;</span><span class="p">,</span><span class="s1">&#39;action&#39;</span><span class="o">=&gt;</span><span class="s1">&#39;display&#39;</span><span class="p">]</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<ul class="last simple">
+<li>Use the * to specify a Wildcard</li>
+<li>The above Wildcard will take /listings/[anything] to the display() method of the Listings controller</li>
+<li>You can also use ** to capture the remainder of a URL as a single passed argument</li>
+</ul>
+</div>
+</div>
+<div class="section" id="route-elements">
+<h2>Route Elements<a class="headerlink" href="#route-elements" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Specifying route elements allows you to define places in the URL where parameters for controller actions should lie</li>
+</ul>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="nv">$routes</span><span class="o">-&gt;</span><span class="na">connect</span><span class="p">(</span>
+<span class="s1">&#39;/:controller/:id&#39;</span><span class="p">,</span>
+<span class="p">[</span><span class="s1">&#39;action&#39;</span><span class="o">=&gt;</span><span class="s1">&#39;view&#39;</span><span class="p">],</span>
+<span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="o">=&gt;</span><span class="s1">&#39;[0-9]+&#39;</span><span class="p">]</span>  <span class="c1">//regular expression [0-9]</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>This will allow you to view models from any controller with a URL like /controllername/:id</li>
+</ul>
+</div>
+<div class="section" id="special-route-elements">
+<h2>Special Route elements<a class="headerlink" href="#special-route-elements" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="32%" />
+<col width="21%" />
+<col width="24%" />
+<col width="24%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Controller</td>
+<td>Action</td>
+<td>Plugin</td>
+<td>Prefix</td>
+</tr>
+<tr class="row-even"><td>_ext</td>
+<td>_base</td>
+<td>_scheme</td>
+<td>_host</td>
+</tr>
+<tr class="row-odd"><td>_port</td>
+<td>_full</td>
+<td>_ssl</td>
+<td>_method</td>
+</tr>
+<tr class="row-even"><td>name</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="named-elements">
+<h2>Named Elements<a class="headerlink" href="#named-elements" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>You can use named routes to make calling them more convenient as well as boost performance a bit</li>
+</ul>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="nv">$routes</span><span class="o">-&gt;</span><span class="na">connect</span><span class="p">(</span><span class="s1">&#39;/login&#39;</span><span class="p">,</span>
+    <span class="p">[</span><span class="s1">&#39;controller&#39;</span><span class="o">=&gt;</span><span class="s1">&#39;Users&#39;</span><span class="p">,</span><span class="s1">&#39;action&#39;</span><span class="o">=&gt;</span><span class="s1">&#39;login&#39;</span><span class="p">],</span>
+    <span class="p">[</span><span class="s1">&#39;_name&#39;</span><span class="o">=&gt;</span><span class="s1">&#39;login]</span>
+<span class="s1">);</span>
+<span class="s1">//Generate a URL</span>
+<span class="s1">$url = Router::url([&#39;</span><span class="nx">_name</span><span class="s1">&#39;=&gt;&#39;</span><span class="nx">login</span><span class="p">]);</span>
+<span class="c1">//with query strings</span>
+<span class="nv">$url</span> <span class="o">=</span> <span class="nx">Router</span><span class="o">::</span><span class="na">url</span><span class="p">([</span><span class="s1">&#39;_name&#39;</span><span class="o">=&gt;</span><span class="s1">&#39;login&#39;</span><span class="p">,</span><span class="s1">&#39;username&#39;</span><span class="o">=&gt;</span><span class="s1">&#39;jimmy&#39;</span><span class="p">]);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="route-prefixes">
+<h2>Route Prefixes<a class="headerlink" href="#route-prefixes" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Specifying route elements allows you to define places in the URL where parameters for controller actions should lie</li>
+</ul>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="nx">Router</span><span class="o">::</span><span class="na">prefix</span><span class="p">(</span><span class="s1">&#39;admin&#39;</span><span class="p">,</span><span class="k">function</span><span class="p">(</span><span class="nv">$routes</span><span class="p">){</span>
+    <span class="nv">$routes</span><span class="o">-&gt;</span><span class="na">connect</span><span class="p">(</span><span class="s1">&#39;/create&#39;</span><span class="p">,[</span><span class="s1">&#39;controller&#39;</span><span class="o">=&gt;</span><span class="s1">&#39;Posts&#39;</span><span class="p">,</span><span class="s1">&#39;action&#39;</span><span class="o">=&gt;</span><span class="s1">&#39;create&#39;</span><span class="p">]);</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>Now we can go to /admin/create to create a new Posts</li>
+</ul>
+</div>
+<div class="section" id="plugin-routes">
+<h2>Plugin Routes<a class="headerlink" href="#plugin-routes" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>You can create special routes for plugins</li>
+</ul>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="nx">Router</span><span class="o">::</span><span class="na">plugin</span><span class="p">(</span><span class="s1">&#39;MyPlugin&#39;</span><span class="p">,</span><span class="k">function</span><span class="p">(</span><span class="nv">$routes</span><span class="p">){</span>
+    <span class="nv">$routes</span><span class="o">-&gt;</span><span class="na">connect</span><span class="p">(</span><span class="s1">&#39;/:controller&#39;</span><span class="p">);</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>Routes connected above will automatically have the prefix of &#8216;/my_plugin&#8217;</li>
+</ul>
+</div>
+<div class="section" id="dashed-route">
+<h2>Dashed Route<a class="headerlink" href="#dashed-route" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Dashed Route can be used to format URLs to use dashes</li>
+</ul>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="nx">Router</span><span class="o">::</span><span class="na">plugin</span><span class="p">(</span><span class="s1">&#39;ToDo&#39;</span><span class="p">,[</span><span class="s1">&#39;path&#39;</span><span class="o">=&gt;</span><span class="s1">&#39;to-do&#39;</span><span class="p">],</span><span class="k">function</span><span class="p">(</span><span class="nv">$routes</span><span class="p">){</span>
+<span class="nv">$routes</span><span class="o">-&gt;</span><span class="na">fallbacks</span><span class="p">(</span><span class="s1">&#39;DashedRoute&#39;</span><span class="p">);</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="file-extensions">
+<h2>File Extensions<a class="headerlink" href="#file-extensions" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="nx">Router</span><span class="o">::</span><span class="na">extensions</span><span class="p">([</span><span class="s1">&#39;html&#39;</span><span class="p">,</span><span class="s1">&#39;json&#39;</span><span class="p">]);</span>
+<span class="c1">//this will allow you to use the .html or .json extensions in your routes</span>
+<span class="c1">//you can also set extensions per scope</span>
+<span class="nx">Router</span><span class="o">::</span><span class="na">scope</span><span class="p">(</span><span class="s1">&#39;/api&#39;</span><span class="p">,</span><span class="k">function</span><span class="p">(</span><span class="nv">$routes</span><span class="p">){</span>
+    <span class="nv">$routes</span><span class="o">-&gt;</span><span class="na">extensions</span><span class="p">([</span><span class="s1">&#39;json&#39;</span><span class="p">,</span><span class="s1">&#39;xml&#39;</span><span class="p">]);</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="restful-routes">
+<h2>Restful Routes<a class="headerlink" href="#restful-routes" title="Permalink to this headline">¶</a></h2>
+<p>You can easily generate RESTful routes with the Router</p>
+<div class="highlight-php"><div class="highlight"><pre><span></span>&lt;?php
+Router::scope(&#39;/&#39;,function($routes){
+    $routes-&gt;extensions([json&#39;]);
+    $routes-&gt;resources(&#39;Posts&#39;);
+});
+</pre></div>
+</div>
+</div>
+<div class="section" id="nested-resources">
+<h2>Nested resources<a class="headerlink" href="#nested-resources" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Once resources are in a scope, you can connect sub-resource routes as well</li>
+</ul>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="nx">Router</span><span class="o">::</span><span class="na">scope</span><span class="p">(</span><span class="s1">&#39;/api&#39;</span><span class="p">,</span><span class="k">function</span><span class="p">(</span><span class="nv">$routes</span><span class="p">){</span>
+    <span class="nv">$routes</span><span class="o">-&gt;</span><span class="na">resources</span><span class="p">(</span><span class="s1">&#39;Posts&#39;</span><span class="p">,</span><span class="k">function</span><span class="p">(</span><span class="nv">$routes</span><span class="p">){</span>
+        <span class="nv">$routes</span><span class="o">-&gt;</span><span class="na">resources</span><span class="p">(</span><span class="s1">&#39;Comments&#39;</span><span class="p">);</span>
+    <span class="p">});</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">/api/posts/:id/Comments
+/api/posts/:id/Comments/:id</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Controllers.html" class="btn btn-neutral float-right" title="Controllers" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Connect to Database.html" class="btn btn-neutral" title="Connect to Database" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, eagle.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

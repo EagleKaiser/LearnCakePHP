@@ -11,7 +11,10 @@ Welcome to LearnCakePHP's documentation!
    :caption: Contents:
 
    Introduction
-
+   Connect to Database
+   Routing
+   Controllers
+   Controller & Route Example
 
 
 Indices and tables

@@ -36,6 +36,7 @@
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
     <link rel="top" title="LearnCakePHP  documentation" href="index.html"/>
+        <link rel="next" title="Connect to Database" href="Connect to Database.html"/>
         <link rel="prev" title="Welcome to LearnCakePHP’s documentation!" href="index.html"/> 
 
   
@@ -88,9 +89,19 @@
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Introduction</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#convention-over-configuration">Convention over Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#naming-conventions">Naming Conventions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#routing">Routing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#helpers">Helpers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#components">Components</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#plugins">Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#scaffolding">Scaffolding</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="Connect to Database.html">Connect to Database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Routing.html">Routing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Controllers.html">Controllers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Controller &amp; Route Example.html">Controller &amp; Route Example</a></li>
 </ul>
 
             
@@ -156,8 +167,33 @@
             
   <div class="section" id="introduction">
 <h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="convention-over-configuration">
-<h2>Convention over Configuration<a class="headerlink" href="#convention-over-configuration" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Install XAMPP, change port to 81</li>
+<li>Web server is in c-&gt;xampp-&gt;htdocs which is the place where the program will run through localhost:81</li>
+<li>Download Composer.phar by using the following console command line in the htdocs directory</li>
+</ul>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="go">php -r &quot;readfile(&#39;https://getcomposer.org/installer&#39;);&quot; | php</span>
+<span class="go">php composer.phar create-project --prefer-dist cakephp/app myblog</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>If Composer is installed globally in the machine by using composer.exe then use the following comand line in the htdocs directory</li>
+</ul>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="go">composer create-project --prefer-dist cakephp/app myblog</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<ul class="last simple">
+<li>This command will create a folder in htdocs called myblog with the required files to run a CakePHP project</li>
+<li>To run the app go to localhost:81/myblog</li>
+</ul>
+</div>
+</div>
+<div class="section" id="naming-conventions">
+<h2>Naming Conventions<a class="headerlink" href="#naming-conventions" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><dl class="first docutils">
 <dt>Files and class names</dt>
@@ -184,15 +220,137 @@
 <li><dl class="first docutils">
 <dt>Controllers</dt>
 <dd><ul class="first last">
-<li>Controller class names are plural and CamelCased (Users)</li>
-<li>Controller class names end with &#8220;controller&#8221; (UsersController)</li>
+<li>Controller class names are plural and CamelCased and ends with &#8220;controller&#8221; (UsersController)</li>
 <li>Index() is the default method in a controller</li>
 <li>yourapp.com/welcome will call the welcome controller and the index() method</li>
 </ul>
 </dd>
 </dl>
 </li>
-<li>Views</li>
+<li><dl class="first docutils">
+<dt>Views</dt>
+<dd><ul class="first last">
+<li>Template files should be named after the controller functions that they display</li>
+<li>The doThis() function of the UsersController class looks for a template in src/Template/Users/do_this.ctp</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Example</dt>
+<dd><ul class="first last">
+<li>Database table: “articles”</li>
+<li>Table class: ArticlesTable, found at src/Model/Table/ArticlesTable.php</li>
+<li>Entity class: Article, found at src/Model/Entity/Article.php</li>
+<li>Controller class: ArticlesController, found at src/Controller/ArticlesController.php</li>
+<li>View template, found at src/Template/Articles/index.ctp</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="section" id="routing">
+<h2>Routing<a class="headerlink" href="#routing" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li>Routing maps URLs to controller actions</li>
+<li>Routing helps URLs look much better and perform better in search engines</li>
+<li>Apache&#8217;s mod_rewrite is not required for routing but makes things look neater</li>
+<li>Default route pattern: <a class="reference external" href="http://example.com/controller/action/param1/param2">http://example.com/controller/action/param1/param2</a>..</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="helpers">
+<h2>Helpers<a class="headerlink" href="#helpers" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Helpers are component-like classes for the presentation layer of the application</li>
+<li>Presentation logic is shared between views or layouts</li>
+<li>To use a helper, add it to the controller&#8217;s helpers array</li>
+<li>var $helpers = array(&#8216;Form&#8217;,&#8217;Html&#8217;,&#8217;Javascript&#8217;,&#8217;Time&#8217;);</li>
+</ul>
+<table border="1" class="docutils">
+<colgroup>
+<col width="35%" />
+<col width="20%" />
+<col width="15%" />
+<col width="30%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head" colspan="4">Helpers List</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Ajax</td>
+<td>Number</td>
+<td>XML</td>
+<td>Cache</td>
+</tr>
+<tr class="row-odd"><td>Paginator</td>
+<td>Form</td>
+<td>RSS</td>
+<td>HTML</td>
+</tr>
+<tr class="row-even"><td>Session</td>
+<td>JS</td>
+<td>Text</td>
+<td>Javascript</td>
+</tr>
+<tr class="row-odd"><td>Time</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="components">
+<h2>Components<a class="headerlink" href="#components" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Components are packages of logic shared between Controllers</li>
+<li>CakePHP comes with a core set of components that can be loaded into the controller at any time</li>
+<li>Components usually have some sort of configuration in the $components array of the controller&#8217;s beforeFilter() method</li>
+</ul>
+<table border="1" class="docutils">
+<colgroup>
+<col width="35%" />
+<col width="44%" />
+<col width="21%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head" colspan="3">Core Components</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Security</td>
+<td>Authentication</td>
+<td>Sessions</td>
+</tr>
+<tr class="row-odd"><td>Request Handler</td>
+<td>Access Control list</td>
+<td>Emails</td>
+</tr>
+<tr class="row-even"><td>Cookies</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="plugins">
+<h2>Plugins<a class="headerlink" href="#plugins" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>CakePHP allows you to combine controllers, models and views together to package as a &#8220;plugin&#8221; that others can use in their Cake applications</li>
+<li>Plugins are tied to an application only by configuration. Otherwise, plugins operate in their own space.</li>
+<li>Stored in /app/plugins</li>
+</ul>
+</div>
+<div class="section" id="scaffolding">
+<h2>Scaffolding<a class="headerlink" href="#scaffolding" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Scaffolding allows developers to generate a very basic application that can perform CRUD(create, read, update and delete) operations</li>
+<li>Scaffolding just needs a model and controller</li>
+<li>Scaffolding is great for development or just to get something up and running but using it too much will cause a loss of flexibility</li>
 </ul>
 </div>
 </div>
@@ -206,6 +364,8 @@
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Connect to Database.html" class="btn btn-neutral float-right" title="Connect to Database" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="index.html" class="btn btn-neutral" title="Welcome to LearnCakePHP’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
