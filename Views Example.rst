@@ -109,5 +109,52 @@ Views Example
                 <hr>
             <?php } ?>
             
-        * An another example we will work with the view method in PostsController.php
+        * An another example we will work with the view method in PostsController.php so first we have to create a new file in Template/Post folder called view.ctp 
+        * Then add the following code to view method in PostsController.php
+        
+        .. code-block:: php
+        
+            <?php
+            $post = [
+                'id' => $id,
+                'title' => 'First Post',
+                'body' => 'This is my first post'
+            ];
+            $this->set('post', $post);
 
+        .. note:: 
+        
+            We have previously made a route for this functionality in routes.php posts scope
+
+            .. code-block:: php
+            
+                <?php
+                $routes->connect('/:id',
+                    ['controller'=>'Posts', 'action'=>'view'],
+                    ['id'=>'\d+', 'pass' => ['id']]
+                ); 
+
+        * And in view.ctp add the following code
+
+        .. code-block:: php
+
+            <div class = "row">
+                <div class="columns large-3 medium-4">
+                    <h3>sidebar</h3>
+                </div>
+                <div class="columns large-9 medium-8">
+                    <h1><?= $post['title'] ?></h1>
+                    <p><?= $post['body'] ?></p>
+                    
+                </div>
+            </div>
+
+        * Now if you go to localhost:81/myblog/posts/1 you will get the results
+
+        .. note:: 
+        
+            in index.ctp you can make a link for each of the id by using the following code
+
+            .. code-block:: php
+            
+                <h4><?= $this->Html->link($post['title'], '/posts/'.$post['id']) ?></h4>

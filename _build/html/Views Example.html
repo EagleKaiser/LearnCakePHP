@@ -270,9 +270,55 @@
 <span class="cp">&lt;?php</span> <span class="p">}</span> <span class="cp">?&gt;</span><span class="x"></span>
 </pre></div>
 </div>
-<ul class="last simple">
-<li>An another example we will work with the view method in PostsController.php</li>
+<ul class="simple">
+<li>An another example we will work with the view method in PostsController.php so first we have to create a new file in Template/Post folder called view.ctp</li>
+<li>Then add the following code to view method in PostsController.php</li>
 </ul>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="nv">$post</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;id&#39;</span> <span class="o">=&gt;</span> <span class="nv">$id</span><span class="p">,</span>
+    <span class="s1">&#39;title&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;First Post&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;body&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;This is my first post&#39;</span>
+<span class="p">];</span>
+<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;post&#39;</span><span class="p">,</span> <span class="nv">$post</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>We have previously made a route for this functionality in routes.php posts scope</p>
+<div class="last highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="nv">$routes</span><span class="o">-&gt;</span><span class="na">connect</span><span class="p">(</span><span class="s1">&#39;/:id&#39;</span><span class="p">,</span>
+    <span class="p">[</span><span class="s1">&#39;controller&#39;</span><span class="o">=&gt;</span><span class="s1">&#39;Posts&#39;</span><span class="p">,</span> <span class="s1">&#39;action&#39;</span><span class="o">=&gt;</span><span class="s1">&#39;view&#39;</span><span class="p">],</span>
+    <span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="o">=&gt;</span><span class="s1">&#39;\d+&#39;</span><span class="p">,</span> <span class="s1">&#39;pass&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]]</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<ul class="simple">
+<li>And in view.ctp add the following code</li>
+</ul>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="x">&lt;div class = &quot;row&quot;&gt;</span>
+<span class="x">    &lt;div class=&quot;columns large-3 medium-4&quot;&gt;</span>
+<span class="x">        &lt;h3&gt;sidebar&lt;/h3&gt;</span>
+<span class="x">    &lt;/div&gt;</span>
+<span class="x">    &lt;div class=&quot;columns large-9 medium-8&quot;&gt;</span>
+<span class="x">        &lt;h1&gt;</span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nv">$post</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">]</span> <span class="cp">?&gt;</span><span class="x">&lt;/h1&gt;</span>
+<span class="x">        &lt;p&gt;</span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nv">$post</span><span class="p">[</span><span class="s1">&#39;body&#39;</span><span class="p">]</span> <span class="cp">?&gt;</span><span class="x">&lt;/p&gt;</span>
+
+<span class="x">    &lt;/div&gt;</span>
+<span class="x">&lt;/div&gt;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>Now if you go to localhost:81/myblog/posts/1 you will get the results</li>
+</ul>
+<div class="last admonition note">
+<p class="first admonition-title">Note</p>
+<p>in index.ctp you can make a link for each of the id by using the following code</p>
+<div class="last highlight-php"><div class="highlight"><pre><span></span><span class="x">&lt;h4&gt;</span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Html</span><span class="o">-&gt;</span><span class="na">link</span><span class="p">(</span><span class="nv">$post</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">],</span> <span class="s1">&#39;/posts/&#39;</span><span class="o">.</span><span class="nv">$post</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">])</span> <span class="cp">?&gt;</span><span class="x">&lt;/h4&gt;</span>
+</pre></div>
+</div>
+</div>
 </dd>
 </dl>
 </li>
