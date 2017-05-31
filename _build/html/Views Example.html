@@ -196,13 +196,87 @@
 <ul class="simple">
 <li>And modify top-bar-section class as follows:</li>
 </ul>
-<div class="last highlight-php"><div class="highlight"><pre><span></span><span class="x">&lt;div class=&quot;top-bar-section&quot;&gt;</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="x">&lt;div class=&quot;top-bar-section&quot;&gt;</span>
 <span class="x">    &lt;ul class=&quot;right&quot;&gt;</span>
 <span class="x">        &lt;li&gt;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Html</span><span class="o">-&gt;</span><span class="na">link</span><span class="p">(</span><span class="s1">&#39;Home&#39;</span><span class="p">,</span><span class="s1">&#39;/&#39;</span><span class="p">);</span><span class="cp">?&gt;</span><span class="x">&lt;/li&gt;</span>
 <span class="x">    &lt;/ul&gt;</span>
 <span class="x">&lt;/div&gt;</span>
 </pre></div>
 </div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>You can specify the link with this code</p>
+<div class="last highlight-html"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">target</span><span class="o">=</span><span class="s">&quot;Home&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;http://localhost:81/myblog/&quot;</span><span class="p">&gt;</span>Home<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</div>
+<ul class="last">
+<li><dl class="first docutils">
+<dt>Now we will get a value from the controller to the view</dt>
+<dd><ul class="first simple">
+<li>In PostsController.php add the following code to index function</li>
+</ul>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;person&#39;</span><span class="p">,</span> <span class="s1">&#39;John&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>In index.ctp in Template/Posts folder add the following code in one of the columns</li>
+</ul>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="o">&lt;</span><span class="nx">h1</span><span class="o">&gt;&lt;?=</span> <span class="nv">$person</span> <span class="o">&lt;/</span><span class="nx">h1</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>This is another example in PostsController.php add the following code to index function</li>
+</ul>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="nv">$people</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Mike&#39;</span><span class="p">,</span> <span class="s1">&#39;Paul&#39;</span><span class="p">,</span> <span class="s1">&#39;Jeff&#39;</span><span class="p">,</span> <span class="s1">&#39;Michelle&#39;</span><span class="p">];</span>
+<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;people&#39;</span><span class="p">,</span> <span class="nv">$people</span><span class="p">);</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>In index.php add the following code to one of the div</li>
+</ul>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+ <span class="o">&lt;</span><span class="nx">ul</span><span class="o">&gt;</span>
+    <span class="o">&lt;?</span><span class="nx">php</span> <span class="k">foreach</span><span class="p">(</span><span class="nv">$people</span> <span class="k">as</span> <span class="nv">$person</span><span class="p">){</span> <span class="cp">?&gt;</span><span class="x"></span>
+<span class="x">        &lt;li&gt;</span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nv">$person</span> <span class="cp">?&gt;</span><span class="x">&lt;/li&gt;</span>
+<span class="x">    </span><span class="cp">&lt;?php</span> <span class="p">}</span> <span class="cp">?&gt;</span><span class="x"></span>
+<span class="x">&lt;/ul&gt;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>Another example to get values from a multidimensional array, add the following code to PostsController.php</li>
+</ul>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+    <span class="nv">$posts</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">[</span><span class="s1">&#39;id&#39;</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;title&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;First Post&#39;</span><span class="p">,</span> <span class="s1">&#39;body&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;This is my first post&#39;</span><span class="p">],</span>
+        <span class="p">[</span><span class="s1">&#39;id&#39;</span> <span class="o">=&gt;</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;title&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;second Post&#39;</span><span class="p">,</span> <span class="s1">&#39;body&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;This is my second post&#39;</span><span class="p">],</span>
+        <span class="p">[</span><span class="s1">&#39;id&#39;</span> <span class="o">=&gt;</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;title&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;third Post&#39;</span><span class="p">,</span> <span class="s1">&#39;body&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;This is my third post&#39;</span><span class="p">],</span>
+    <span class="p">];</span>
+    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;posts&#39;</span><span class="p">,</span> <span class="nv">$posts</span><span class="p">);</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>In index.ctp add the following code</li>
+</ul>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span> <span class="k">foreach</span><span class="p">(</span><span class="nv">$posts</span> <span class="k">as</span> <span class="nv">$post</span><span class="p">)</span> <span class="p">{</span> <span class="cp">?&gt;</span><span class="x"></span>
+<span class="x">    &lt;div&gt;</span>
+<span class="x">        &lt;h4&gt;</span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nv">$post</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">]</span> <span class="cp">?&gt;</span><span class="x">&lt;/h4&gt;</span>
+<span class="x">        &lt;p&gt;</span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nv">$post</span><span class="p">[</span><span class="s1">&#39;body&#39;</span><span class="p">]</span> <span class="cp">?&gt;</span><span class="x">&lt;/p&gt;</span>
+<span class="x">    &lt;/div&gt;</span>
+<span class="x">    &lt;hr&gt;</span>
+<span class="cp">&lt;?php</span> <span class="p">}</span> <span class="cp">?&gt;</span><span class="x"></span>
+</pre></div>
+</div>
+<ul class="last simple">
+<li>An another example we will work with the view method in PostsController.php</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
 </dd>
 </dl>
 </li>
