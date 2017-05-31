@@ -158,3 +158,5 @@ Views Example
             .. code-block:: php
             
                 <h4><?= $this->Html->link($post['title'], '/posts/'.$post['id']) ?></h4>
+
+        
