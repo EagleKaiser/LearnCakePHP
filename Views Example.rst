@@ -145,7 +145,6 @@ Views Example
                 <div class="columns large-9 medium-8">
                     <h1><?= $post['title'] ?></h1>
                     <p><?= $post['body'] ?></p>
-                    
                 </div>
             </div>
 
@@ -158,5 +157,3 @@ Views Example
             .. code-block:: php
             
                 <h4><?= $this->Html->link($post['title'], '/posts/'.$post['id']) ?></h4>
-
-        
