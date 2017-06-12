@@ -1,0 +1,570 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Component and Helpers &mdash; LearnCakePHP  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="LearnCakePHP  documentation" href="index.html"/>
+        <link rel="prev" title="Views Example" href="Views Example.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> LearnCakePHP
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Connect to Database.html">Connect to Database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Routing.html">Routing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Controllers.html">Controllers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Controller &amp; Route Example.html">Controller &amp; Route Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Views &amp; Templates.html">Views &amp; Templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Views Example.html">Views Example</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Component and  Helpers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#component">Component</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#helpers">Helpers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#nested-list">Nested list</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#html-table-helper">Html Table Helper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#html-form-helper">Html Form Helper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#text-helper">Text Helper</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">LearnCakePHP</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Component and  Helpers</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/Component and  Helpers.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="component-and-helpers">
+<h1>Component and  Helpers<a class="headerlink" href="#component-and-helpers" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="component">
+<h2>Component<a class="headerlink" href="#component" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Add a new file in controller folder Called DevsController.php with the following code</li>
+</ul>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="k">namespace</span> <span class="nx">App\Controller</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">App\Controller\AppController</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">DevsController</span> <span class="k">extends</span> <span class="nx">AppController</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">index</span><span class="p">()</span>
+    <span class="p">{</span>
+
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>In Template folder add a new folder called Devs and inside create a new file called index.ctp</li>
+</ul>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="k">echo</span> <span class="s1">&#39;Devs&#39;</span><span class="p">;</span>
+<span class="c1">//go to localhost:81/myblog/devs to see the result</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>Create BlogComponent.php file in Controller/Component folder with the following code:</li>
+</ul>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="k">namespace</span> <span class="nx">App\Controller\Component</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Cake\Controller\Component</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">BlogComponent</span> <span class="k">extends</span> <span class="nx">Component</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">sayHello</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="s1">&#39;Hello&#39;</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul>
+<li><dl class="first docutils">
+<dt>In PostController.php add the following code:</dt>
+<dd><ul class="first simple">
+<li>Create initialize() function</li>
+</ul>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="k">public</span> <span class="k">function</span> <span class="nf">initialize</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">loadComponent</span><span class="p">(</span><span class="s1">&#39;Blog&#39;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>In index() function add the following code</li>
+</ul>
+<div class="last highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="k">die</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Blog</span><span class="o">-&gt;</span><span class="na">sayHello</span><span class="p">());</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><p class="first">Now if you go to url localhost:81/myblog/posts will return Hello</p>
+</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Because we have created a route from default page to PostController we will get the same result by going to url localhost:81/myblog</p>
+</div>
+<ul class="simple">
+<li>Now remove die() function from PostsController() and add the following code to BlogComponent.php</li>
+</ul>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="k">public</span> <span class="k">function</span> <span class="nf">getPosts</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="nv">$posts</span> <span class="o">=</span> <span class="p">[</span>
+                <span class="p">[</span><span class="s1">&#39;id&#39;</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;title&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;First Post&#39;</span><span class="p">,</span> <span class="s1">&#39;body&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;This is my first post&#39;</span><span class="p">],</span>
+                <span class="p">[</span><span class="s1">&#39;id&#39;</span> <span class="o">=&gt;</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;title&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;second Post&#39;</span><span class="p">,</span> <span class="s1">&#39;body&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;This is my second post&#39;</span><span class="p">],</span>
+                <span class="p">[</span><span class="s1">&#39;id&#39;</span> <span class="o">=&gt;</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;title&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;third Post&#39;</span><span class="p">,</span> <span class="s1">&#39;body&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;This is my third post&#39;</span><span class="p">],</span>
+            <span class="p">];</span>
+    <span class="k">return</span> <span class="nv">$posts</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>Change PostController.php to be as follows:</li>
+</ul>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="k">private</span> <span class="nv">$posts</span><span class="p">;</span>
+<span class="k">public</span> <span class="k">function</span> <span class="nf">initialize</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">loadComponent</span><span class="p">(</span><span class="s1">&#39;Blog&#39;</span><span class="p">);</span>
+    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">posts</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Blog</span><span class="o">-&gt;</span><span class="na">getPosts</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>Add the following code to DevsController.php</li>
+</ul>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="k">private</span> <span class="nv">$posts</span><span class="p">;</span>
+<span class="k">public</span> <span class="k">function</span> <span class="nf">initialize</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">loadComponent</span><span class="p">(</span><span class="s1">&#39;Blog&#39;</span><span class="p">);</span>
+    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">posts</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Blog</span><span class="o">-&gt;</span><span class="na">getPosts</span><span class="p">();</span>
+<span class="p">}</span>
+<span class="k">public</span> <span class="k">function</span> <span class="nf">index</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;posts&#39;</span><span class="p">,</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">posts</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>Add a new component file in component directory called DevsComponent.php with the following code:</li>
+</ul>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="k">namespace</span> <span class="nx">App\Controller\Component</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Cake\Controller\Component</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">DevsComponent</span> <span class="k">extends</span> <span class="nx">Component</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">generatePassword</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$password</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+        <span class="nv">$desired_length</span> <span class="o">=</span> <span class="nb">rand</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">12</span><span class="p">);</span>
+
+        <span class="k">for</span> <span class="p">(</span><span class="nv">$length</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nv">$length</span> <span class="o">&lt;</span> <span class="nv">$desired_length</span><span class="p">;</span> <span class="nv">$length</span><span class="o">++</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="nv">$password</span> <span class="o">.=</span> <span class="nb">chr</span><span class="p">(</span><span class="nb">rand</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span><span class="mi">126</span><span class="p">));</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="nv">$password</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>And Add the following to DevsController.php</li>
+</ul>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+  <span class="k">namespace</span> <span class="nx">App\Controller</span><span class="p">;</span>
+  <span class="k">use</span> <span class="nx">App\Controller\AppController</span><span class="p">;</span>
+
+  <span class="k">class</span> <span class="nc">DevsController</span> <span class="k">extends</span> <span class="nx">AppController</span>
+  <span class="p">{</span>
+      <span class="k">public</span> <span class="k">function</span> <span class="nf">initialize</span><span class="p">()</span>
+      <span class="p">{</span>
+          <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">loadComponent</span><span class="p">(</span><span class="s1">&#39;Devs&#39;</span><span class="p">);</span>
+      <span class="p">}</span>
+      <span class="k">public</span> <span class="k">function</span> <span class="nf">index</span><span class="p">()</span>
+      <span class="p">{</span>
+          <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;password&#39;</span><span class="p">,</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Devs</span><span class="o">-&gt;</span><span class="na">generatePassword</span><span class="p">());</span>
+      <span class="p">}</span>
+  <span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>Then add the following to Template/devs/index.ctp</li>
+</ul>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="o">&lt;</span><span class="nx">h4</span><span class="o">&gt;</span><span class="nx">Password</span><span class="o">:</span> <span class="o">&lt;?=</span> <span class="nv">$password</span> <span class="cp">?&gt;</span><span class="x">&lt;/h4&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="helpers">
+<h2>Helpers<a class="headerlink" href="#helpers" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>You can find Html helpers ( $this-&gt;Html ) examples in Template/Layout/default.ctp</li>
+<li>Also in default.ctp you can add custom style attribute by adding the following code in the &lt;head&gt; tag</li>
+</ul>
+<div class="highlight-PHP"><div class="highlight"><pre><span></span><span class="cp">&lt;?PHP</span>
+<span class="o">&lt;</span><span class="nx">style</span><span class="o">&gt;</span>
+    <span class="nx">body</span><span class="p">{</span>
+        <span class="o">&lt;?=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Html</span><span class="o">-&gt;</span><span class="na">style</span><span class="p">([</span>
+        <span class="s1">&#39;background&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;#000&#39;</span>
+        <span class="p">]);</span> <span class="cp">?&gt;</span><span class="x"></span>
+<span class="x">    }</span>
+<span class="x">&lt;/style&gt;</span>
+<span class="x">// to generate a link use</span>
+<span class="x">$this-&gt;Html-&gt;link(&#39;link text&#39;, &#39;link location&#39;);</span>
+<span class="x">// to add attribute to Html helpers use the following</span>
+<span class="x">$this-&gt;Html-&gt;link(&#39;link text&#39;, &#39;link location&#39;, [&#39;class&#39; =&gt; &#39;active&#39;]);</span>
+</pre></div>
+</div>
+<ul>
+<li><dl class="first docutils">
+<dt>To add an image using html helper use the following code:</dt>
+<dd><ul class="first simple">
+<li>in PostController.php modify  view function as follows:</li>
+</ul>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="nv">$post</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;id&#39;</span> <span class="o">=&gt;</span> <span class="nv">$id</span><span class="p">,</span>
+    <span class="s1">&#39;title&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;First Post&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;body&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;This is my first post&#39;</span><span class="p">,</span>
+    <span class="c1">//added image link</span>
+    <span class="s1">&#39;image&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;http://oi63.tinypic.com/21blk5g.jpg&#39;</span>
+<span class="p">];</span>
+<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;post&#39;</span><span class="p">,</span> <span class="nv">$post</span><span class="p">);</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>in Posts/view.ctp adde the folowing to view the image</li>
+</ul>
+<div class="last highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Html</span><span class="o">-&gt;</span><span class="na">image</span><span class="p">(</span><span class="nv">$post</span><span class="p">[</span><span class="s1">&#39;image&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;alt&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;myImage&#39;</span><span class="p">]);</span> <span class="cp">?&gt;</span><span class="x"></span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><p class="first">There are multiple helpers available like media</p>
+</li>
+</ul>
+</div>
+<div class="section" id="nested-list">
+<h2>Nested list<a class="headerlink" href="#nested-list" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><dl class="first docutils">
+<dt>To use nested list use the following code</dt>
+<dd><ul class="first simple">
+<li>In PostsController.php add the following to the view function</li>
+</ul>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="nv">$languages</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;Languages&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+        <span class="s1">&#39;English&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+            <span class="s1">&#39;American&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;Canadian&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;British&#39;</span>
+        <span class="p">],</span>
+        <span class="s1">&#39;Spanish&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;German&#39;</span>
+    <span class="p">]</span>
+<span class="p">];</span>
+<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;languages&#39;</span><span class="p">,</span> <span class="nv">$languages</span><span class="p">);</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>In Posts/view.ctp add the following to view the list</li>
+</ul>
+<div class="last highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="o">&lt;?=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Html</span><span class="o">-&gt;</span><span class="na">nestedList</span><span class="p">(</span><span class="nv">$languages</span><span class="p">);</span> <span class="cp">?&gt;</span><span class="x"></span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="section" id="html-table-helper">
+<h2>Html Table Helper<a class="headerlink" href="#html-table-helper" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Use the following code to create a table using Html table helper</li>
+</ul>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="o">&lt;</span><span class="nx">table</span><span class="o">&gt;</span>
+    <span class="o">&lt;?=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Html</span><span class="o">-&gt;</span><span class="na">tableHeaders</span><span class="p">(</span>
+        <span class="p">[</span><span class="s1">&#39;Id&#39;</span><span class="p">,</span> <span class="s1">&#39;Name&#39;</span><span class="p">,</span> <span class="s1">&#39;Email&#39;</span><span class="p">]</span>
+    <span class="p">);</span> <span class="cp">?&gt;</span><span class="x"></span>
+<span class="x">    </span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Html</span><span class="o">-&gt;</span><span class="na">tableCells</span><span class="p">([</span>
+        <span class="p">[</span><span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="s1">&#39;John&#39;</span><span class="p">,</span> <span class="s1">&#39;j@j.com&#39;</span><span class="p">],</span>
+        <span class="p">[</span><span class="s1">&#39;2&#39;</span><span class="p">,</span> <span class="s1">&#39;Bob&#39;</span><span class="p">,</span> <span class="s1">&#39;b@b.com&#39;</span><span class="p">]</span>
+    <span class="p">]);</span> <span class="cp">?&gt;</span><span class="x"></span>
+<span class="x">&lt;/table&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="html-form-helper">
+<h2>Html Form Helper<a class="headerlink" href="#html-form-helper" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p class="first">In Template/Layout/default.ctp add the following ling in &lt;div class=&#8221;top-bar-section&gt;</p>
+<blockquote>
+<div><div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="o">&lt;</span><span class="nx">li</span><span class="o">&gt;&lt;?=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Html</span><span class="o">-&gt;</span><span class="na">link</span><span class="p">(</span><span class="s1">&#39;Create Post&#39;</span><span class="p">,</span> <span class="s1">&#39;/posts/create&#39;</span><span class="p">);</span> <span class="cp">?&gt;</span><span class="x"> &lt;/li&gt;</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p class="first">Create a new Template Posts folder called create.ctp with the following code:</p>
+</li>
+</ul>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="x">&lt;h3&gt;Create Post&lt;/h3&gt;</span>
+<span class="cp">&lt;?</span><span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Form</span><span class="o">-&gt;</span><span class="na">create</span><span class="p">();</span> <span class="cp">?&gt;</span><span class="x"></span>
+<span class="x">    </span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Form</span><span class="o">-&gt;</span><span class="na">input</span><span class="p">(</span><span class="s1">&#39;title&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+                                <span class="s1">&#39;label&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Post Title&#39;</span><span class="p">,</span>
+                                <span class="s1">&#39;class&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;class-name&#39;</span>
+                        <span class="p">));</span> <span class="cp">?&gt;</span><span class="x"></span>
+<span class="x">    </span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Form</span><span class="o">-&gt;</span><span class="na">input</span><span class="p">(</span><span class="s1">&#39;body&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+                                <span class="s1">&#39;label&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Post Body&#39;</span><span class="p">,</span>
+                                <span class="s1">&#39;type&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;textarea&#39;</span><span class="p">,</span>
+                                <span class="s1">&#39;escape&#39;</span> <span class="o">=&gt;</span> <span class="k">false</span><span class="p">,</span>
+                                <span class="s1">&#39;class&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;class-name&#39;</span>
+                        <span class="p">));</span> <span class="cp">?&gt;</span><span class="x"></span>
+<span class="x">    </span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Form</span><span class="o">-&gt;</span><span class="na">input</span><span class="p">(</span><span class="s1">&#39;category&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+                                <span class="s1">&#39;label&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Categoty&#39;</span><span class="p">,</span>
+                                <span class="s1">&#39;type&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;select&#39;</span><span class="p">,</span>
+                                <span class="s1">&#39;empty&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Select One&#39;</span><span class="p">,</span>
+                                <span class="s1">&#39;options&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;Web Development&#39;</span><span class="p">,</span> <span class="s1">&#39;Design&#39;</span><span class="p">,</span> <span class="s1">&#39;Marketing&#39;</span><span class="p">],</span>
+                                <span class="s1">&#39;class&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;class-name&#39;</span>
+                        <span class="p">));</span> <span class="cp">?&gt;</span><span class="x"></span>
+<span class="x">    </span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Form</span><span class="o">-&gt;</span><span class="na">input</span><span class="p">(</span><span class="s1">&#39;author&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+                                <span class="s1">&#39;label&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Author&#39;</span><span class="p">,</span>
+                                <span class="s1">&#39;class&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;class-name&#39;</span>
+                        <span class="p">));</span> <span class="cp">?&gt;</span><span class="x"></span>
+<span class="x">    </span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Form</span><span class="o">-&gt;</span><span class="na">input</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">,</span> <span class="p">[</span>
+        <span class="s1">&#39;type&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;time&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;interval&#39;</span> <span class="o">=&gt;</span> <span class="mi">15</span>
+    <span class="p">]);</span> <span class="cp">?&gt;</span><span class="x"></span>
+<span class="x">    </span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Form</span><span class="o">-&gt;</span><span class="na">inputs</span><span class="p">([</span>
+        <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;label&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Name&#39;</span><span class="p">,</span> <span class="s1">&#39;class&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;class-name&#39;</span><span class="p">],</span>
+        <span class="s1">&#39;age&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;label&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Age&#39;</span><span class="p">,</span> <span class="s1">&#39;class&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;class-name&#39;</span><span class="p">]</span>
+    <span class="p">]);</span> <span class="cp">?&gt;</span><span class="x"></span>
+<span class="x">    &lt;hr&gt;</span>
+<span class="x">    </span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Form</span><span class="o">-&gt;</span><span class="na">submit</span><span class="p">(</span><span class="s1">&#39;Submit&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;class&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;class-name&#39;</span><span class="p">));</span> <span class="cp">?&gt;</span><span class="x"></span>
+<span class="cp">&lt;?</span><span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Form</span><span class="o">-&gt;</span><span class="na">end</span><span class="p">();</span> <span class="cp">?&gt;</span><span class="x"></span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="text-helper">
+<h2>Text Helper<a class="headerlink" href="#text-helper" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Text</span><span class="o">-&gt;</span><span class="na">truncate</span><span class="p">(</span><span class="nv">$post</span><span class="p">[</span><span class="s1">&#39;body&#39;</span><span class="p">],</span><span class="mi">196</span><span class="p">,[</span><span class="s1">&#39;ellipsis&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;...&#39;</span><span class="p">,</span> <span class="s1">&#39;exact&#39;</span> <span class="o">=&gt;</span> <span class="k">false</span><span class="p">]);</span> <span class="cp">?&gt;</span><span class="x"></span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="Views Example.html" class="btn btn-neutral" title="Views Example" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, eagle.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
