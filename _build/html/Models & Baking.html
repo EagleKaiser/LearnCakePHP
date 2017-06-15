@@ -95,7 +95,12 @@
 <li class="toctree-l1"><a class="reference internal" href="Views &amp; Templates.html">Views &amp; Templates</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Views Example.html">Views Example</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Component and  Helpers.html">Component and  Helpers</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Models &amp; Baking</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Models &amp; Baking</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#validation">Validation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#update">Update</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#delete">Delete</a></li>
+</ul>
+</li>
 </ul>
 
             
@@ -216,6 +221,17 @@
 </dd>
 </dl>
 </li>
+<li><p class="first">To sort the results so the newest posts will be on top modify the index function as follows:</p>
+</li>
+</ul>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="k">public</span> <span class="k">function</span> <span class="nf">index</span><span class="p">(){</span>
+    <span class="nv">$posts</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Posts</span><span class="o">-&gt;</span><span class="na">find</span><span class="p">(</span><span class="s1">&#39;all&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;order&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;created&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;desc&#39;</span><span class="p">)));</span>
+    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="nb">compact</span><span class="p">(</span><span class="s1">&#39;posts&#39;</span><span class="p">));</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul>
 <li><dl class="first docutils">
 <dt>To create a new post do the following:</dt>
 <dd><ul class="first simple">
@@ -248,8 +264,146 @@
 </li>
 </ul>
 <div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
-<span class="o">&lt;</span><span class="nx">small</span><span class="o">&gt;&lt;?=</span> <span class="nv">$post</span><span class="p">[</span><span class="s1">&#39;created&#39;</span><span class="p">]</span><span class="o">-&gt;</span><span class="na">format</span><span class="p">(</span><span class="nx">DATE_RFC850</span><span class="p">);</span> <span class="cp">?&gt;</span><span class="x">&lt;/small&gt;</span>
+<span class="o">&lt;</span><span class="nx">small</span><span class="o">&gt;&lt;</span><span class="nx">strong</span><span class="o">&gt;&lt;?=</span> <span class="nv">$post</span><span class="p">[</span><span class="s1">&#39;created&#39;</span><span class="p">]</span><span class="o">-&gt;</span><span class="na">format</span><span class="p">(</span><span class="nx">DATE_RFC850</span><span class="p">);</span> <span class="cp">?&gt;</span><span class="x">&lt;/strong&gt;&lt;/small&gt;</span>
 </pre></div>
+</div>
+<div class="section" id="validation">
+<h2>Validation<a class="headerlink" href="#validation" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>To Add validation add the following code in the src/Model/PostsTable.php</li>
+</ul>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="k">namespace</span> <span class="nx">App\Model\Table</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Cake\ORM\Table</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Cake\Validation\Validator</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">PostsTable</span> <span class="k">extends</span> <span class="nx">Table</span><span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">initialize</span><span class="p">(</span><span class="k">array</span> <span class="nv">$config</span><span class="p">){</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">addBehavior</span><span class="p">(</span><span class="s1">&#39;Timestamp&#39;</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">validationDefault</span><span class="p">(</span><span class="nx">Validator</span> <span class="nv">$validator</span><span class="p">){</span>
+        <span class="nv">$validator</span>
+            <span class="o">-&gt;</span><span class="na">notEmpty</span><span class="p">(</span><span class="s1">&#39;title&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">RequirePresence</span><span class="p">(</span><span class="s1">&#39;title&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">notEmpty</span><span class="p">(</span><span class="s1">&#39;body&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">RequirePresence</span><span class="p">(</span><span class="s1">&#39;body&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">notEmpty</span><span class="p">(</span><span class="s1">&#39;author&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">RequirePresence</span><span class="p">(</span><span class="s1">&#39;author&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">notEmpty</span><span class="p">(</span><span class="s1">&#39;category&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">RequirePresence</span><span class="p">(</span><span class="s1">&#39;category&#39;</span><span class="p">);</span>
+        <span class="k">return</span> <span class="nv">$validator</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="update">
+<h2>Update<a class="headerlink" href="#update" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>To update a post add the following code to PostsController.php</li>
+</ul>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="k">public</span> <span class="k">function</span> <span class="nf">edit</span><span class="p">(</span><span class="nv">$id</span><span class="p">){</span>
+    <span class="c1">//die(&#39;create post&#39;);</span>
+    <span class="c1">//$posts = $this-&gt;Posts-&gt;find(&#39;all&#39;);</span>
+    <span class="c1">//$this-&gt;set(compact(&#39;posts&#39;));</span>
+
+    <span class="nv">$post</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Posts</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="nv">$id</span><span class="p">);</span>
+
+    <span class="k">if</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">request</span><span class="o">-&gt;</span><span class="na">is</span><span class="p">([</span><span class="s1">&#39;post&#39;</span><span class="p">,</span> <span class="s1">&#39;put&#39;</span><span class="p">])){</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Posts</span><span class="o">-&gt;</span><span class="na">patchEntity</span><span class="p">(</span><span class="nv">$post</span><span class="p">,</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">request</span><span class="o">-&gt;</span><span class="na">data</span><span class="p">);</span>
+        <span class="k">if</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Posts</span><span class="o">-&gt;</span><span class="na">save</span><span class="p">(</span><span class="nv">$post</span><span class="p">)){</span>
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Flash</span><span class="o">-&gt;</span><span class="na">success</span><span class="p">(</span><span class="nx">__</span><span class="p">(</span><span class="s1">&#39;Post Updated&#39;</span><span class="p">));</span>
+            <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">redirect</span><span class="p">([</span><span class="s1">&#39;action&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;index&#39;</span><span class="p">]);</span>
+        <span class="p">}</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Flash</span><span class="o">-&gt;</span><span class="na">error</span><span class="p">(</span><span class="nx">__</span><span class="p">(</span><span class="s1">&#39;Unable to update post&#39;</span><span class="p">));</span>
+    <span class="p">}</span>
+    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;post&#39;</span><span class="p">,</span> <span class="nv">$post</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>Create a new file under Layout/Posts called edit.ctp with the following code which is almost same as create.ctp</li>
+</ul>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="o">&lt;</span><span class="nx">h3</span><span class="o">&gt;</span><span class="nx">Edit</span> <span class="nx">Post</span><span class="o">&lt;/</span><span class="nx">h3</span><span class="o">&gt;</span>
+<span class="o">&lt;?=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Form</span><span class="o">-&gt;</span><span class="na">create</span><span class="p">(</span><span class="nv">$Post</span><span class="p">);</span> <span class="cp">?&gt;</span><span class="x"></span>
+<span class="x">    </span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Form</span><span class="o">-&gt;</span><span class="na">input</span><span class="p">(</span><span class="s1">&#39;title&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+                                <span class="s1">&#39;label&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Post Title&#39;</span><span class="p">,</span>
+                                <span class="s1">&#39;class&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;class-name&#39;</span>
+                        <span class="p">));</span> <span class="cp">?&gt;</span><span class="x"></span>
+<span class="x">    </span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Form</span><span class="o">-&gt;</span><span class="na">input</span><span class="p">(</span><span class="s1">&#39;body&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+                                <span class="s1">&#39;label&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Post Body&#39;</span><span class="p">,</span>
+                                <span class="s1">&#39;type&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;textarea&#39;</span><span class="p">,</span>
+                                <span class="s1">&#39;escape&#39;</span> <span class="o">=&gt;</span> <span class="k">false</span><span class="p">,</span>
+                                <span class="s1">&#39;class&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;class-name&#39;</span>
+                        <span class="p">));</span> <span class="cp">?&gt;</span><span class="x"></span>
+<span class="x">    </span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Form</span><span class="o">-&gt;</span><span class="na">input</span><span class="p">(</span><span class="s1">&#39;category&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+                                <span class="s1">&#39;label&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Categoty&#39;</span><span class="p">,</span>
+                                <span class="s1">&#39;type&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;select&#39;</span><span class="p">,</span>
+                                <span class="s1">&#39;empty&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Select One&#39;</span><span class="p">,</span>
+                                <span class="s1">&#39;options&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;Web Development&#39;</span><span class="p">,</span> <span class="s1">&#39;Design&#39;</span><span class="p">,</span> <span class="s1">&#39;Marketing&#39;</span><span class="p">],</span>
+                                <span class="s1">&#39;class&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;class-name&#39;</span>
+                        <span class="p">));</span> <span class="cp">?&gt;</span><span class="x"></span>
+<span class="x">    </span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Form</span><span class="o">-&gt;</span><span class="na">input</span><span class="p">(</span><span class="s1">&#39;author&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+                                <span class="s1">&#39;label&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Author&#39;</span><span class="p">,</span>
+                                <span class="s1">&#39;class&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;class-name&#39;</span>
+                        <span class="p">));</span> <span class="cp">?&gt;</span><span class="x"></span>
+<span class="x">    </span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Form</span><span class="o">-&gt;</span><span class="na">input</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">,</span> <span class="p">[</span>
+        <span class="s1">&#39;type&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;time&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;interval&#39;</span> <span class="o">=&gt;</span> <span class="mi">15</span>
+    <span class="p">]);</span> <span class="cp">?&gt;</span><span class="x"></span>
+<span class="x">    </span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Form</span><span class="o">-&gt;</span><span class="na">inputs</span><span class="p">([</span>
+        <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;label&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Name&#39;</span><span class="p">,</span> <span class="s1">&#39;class&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;class-name&#39;</span><span class="p">],</span>
+        <span class="s1">&#39;age&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;label&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Age&#39;</span><span class="p">,</span> <span class="s1">&#39;class&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;class-name&#39;</span><span class="p">]</span>
+    <span class="p">]);</span> <span class="cp">?&gt;</span><span class="x"></span>
+<span class="x">    &lt;hr&gt;</span>
+<span class="x">    </span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Form</span><span class="o">-&gt;</span><span class="na">submit</span><span class="p">(</span><span class="s1">&#39;Submit&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;class&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;class-name&#39;</span><span class="p">));</span> <span class="cp">?&gt;</span><span class="x"></span>
+<span class="cp">&lt;?</span><span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Form</span><span class="o">-&gt;</span><span class="na">end</span><span class="p">();</span> <span class="cp">?&gt;</span><span class="x"></span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>Now edit Layout/Posts/view.ctp to have the following code:</li>
+</ul>
+<div class="highlight-php"><div class="highlight"><pre><span></span>&lt;?php
+&lt;div class = &quot;row&quot;&gt;
+&lt;div class=&quot;columns large-3 medium-4&quot;&gt;
+    &lt;h3&gt;sidebar&lt;/h3&gt;
+&lt;/div&gt;
+&lt;div class=&quot;columns large-9 medium-8&quot;&gt;
+   &lt;h1&gt;&lt;?= $post[&#39;title&#39;] ?&gt;&lt;/h1&gt;
+   &lt;p&gt;&lt;?= $post[&#39;body&#39;] ?&gt;&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;?= $this-&gt;Html-&gt;link(&#39;Edit Post&#39;, [&#39;action&#39; =&gt; &#39;edit&#39;, $post[&#39;id&#39;]], [&#39;class&#39; =&gt; &#39;class-name&#39;]); ?&gt;
+</pre></div>
+</div>
+</div>
+<div class="section" id="delete">
+<h2>Delete<a class="headerlink" href="#delete" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>In PostsController.php add the following code:</li>
+</ul>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="k">public</span> <span class="k">function</span> <span class="nf">delete</span><span class="p">(</span><span class="nv">$id</span><span class="p">){</span>
+    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">request</span><span class="o">-&gt;</span><span class="na">allowMethod</span><span class="p">([</span><span class="s1">&#39;post&#39;</span><span class="p">,</span> <span class="s1">&#39;delete&#39;</span><span class="p">]);</span>
+    <span class="nv">$post</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Posts</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="nv">$id</span><span class="p">);</span>
+    <span class="k">if</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Posts</span><span class="o">-&gt;</span><span class="na">delete</span><span class="p">(</span><span class="nv">$post</span><span class="p">)){</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Flash</span><span class="o">-&gt;</span><span class="na">success</span><span class="p">(</span><span class="nx">__</span><span class="p">(</span><span class="s1">&#39;Post Deleted&#39;</span><span class="p">));</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">redirect</span><span class="p">([</span><span class="s1">&#39;action&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;index&#39;</span><span class="p">]);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>Now in Layout/Posts/view.ctp add the following code:</li>
+</ul>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Form</span><span class="o">-&gt;</span><span class="na">postLink</span><span class="p">(</span><span class="s1">&#39;delete&#39;</span><span class="p">,</span>
+                        <span class="p">[</span><span class="s1">&#39;action&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;delete&#39;</span><span class="p">,</span> <span class="nv">$post</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]],</span>
+                        <span class="p">[</span><span class="s1">&#39;confirm&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Are you sure?&#39;</span><span class="p">,</span>
+                        <span class="s1">&#39;class&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;className&#39;</span><span class="p">]);</span> <span class="cp">?&gt;</span><span class="x"></span>
+</pre></div>
+</div>
 </div>
 </div>
 
