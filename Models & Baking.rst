@@ -228,3 +228,4 @@ Delete
     <?= $this->Form->postLink('delete',
                             ['action' => 'delete', $post['id']],
                             ['confirm' => 'Are you sure?','class' => 'className']); ?>
+
